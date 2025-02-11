@@ -1,4 +1,4 @@
-# WebSexto
+# Modulo de Desarollo Web
 
 ## Stack Tecnologico
 ## Frontend
