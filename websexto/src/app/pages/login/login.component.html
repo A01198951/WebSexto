@@ -1,0 +1,44 @@
+<!-- Contenedor principal que centra todo el contenido del login -->
+<div class="login-container">
+  <!-- Formulario con evento ngSubmit que ejecuta el método login -->
+  <form (ngSubmit)="login()">
+    <!-- Ícono de perfil circular en la parte superior -->
+    <div class="profile-icon">
+      <i class="fas fa-user"></i>
+    </div>
+    <!-- Título del formulario -->
+    <h2>Iniciar Sesión</h2>
+    
+    <!--Usuario -->
+    <div class="form-group">
+      <label for="username">Usuario:</label>
+      <input 
+        type="text" 
+        id="username" 
+        [(ngModel)]="username" 
+        name="username" 
+        required 
+        placeholder="Ingrese su usuario"
+      />
+    </div>
+
+    <!--Contraseña -->
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input 
+        type="password" 
+        id="password" 
+        [(ngModel)]="password" 
+        name="password" 
+        required 
+        placeholder="Ingrese su contraseña"
+      />
+    </div>
+
+    <!-- Botón de envío del formulario -->
+    <button type="submit">Ingresar</button>
+    
+    <!-- Mensaje de error condicional que se muestra solo si errorMessage tiene un valor -->
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>

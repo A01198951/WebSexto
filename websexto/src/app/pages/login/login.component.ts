@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule]
+  imports: [CommonModule, FormsModule]
 })
-export class AppComponent {
-  title = 'websexto';
+export class LoginComponent {
+  // Propiedades para el usuario y contraseña
   username: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private router: Router) {}
   // Método para validar el usuario y contraseña
-  onSubmit() {
+  login() {
     if (this.username === 'admin' && this.password === '1234') {
-      console.log('Inicio de sesión exitoso');
       this.router.navigate(['/home']);
     } else {
-      console.log('Credenciales incorrectas');
+      this.errorMessage = 'Credenciales incorrectas';
     }
   }
 }
