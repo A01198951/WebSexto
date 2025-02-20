@@ -29,3 +29,22 @@
     color: #ffd700;
     border-bottom: 2px solid #ffd700;
   }
+
+  .nav-list li button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-list li button:hover {
+    background-color: #ff0000;
+}
+
+.nav-list li button:active {
+    transform: scale(0.98);
+}

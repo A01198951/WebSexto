@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,17 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
-  // Propiedades para el usuario y contraseña
   username: string = '';
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router: Router) {}
-  // Método para validar el usuario y contraseña
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
   login() {
-    if (this.username === 'admin' && this.password === '1234') {
+    if (this.authService.login(this.username, this.password)) {
       this.router.navigate(['/home']);
     } else {
       this.errorMessage = 'Credenciales incorrectas';
