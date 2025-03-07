@@ -1,4 +1,17 @@
-<div class="page-container">
-    <h1>Informes</h1>
-    <!-- Contenido de informes irá aquí -->
-</div>
+<main>
+    @for (pokemon of pokemons; track pokemon.name) {
+      <div class="pokemon-info">
+        <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+        <div class="pokemon-details">
+          <h2>{{pokemon.name}}</h2>
+          <p class="abilities">Abilities: {{getAbilityNames(pokemon.abilities)}}</p>
+          <div class="stats">
+            <h3>Stats:</h3>
+            @for (stat of pokemon.stats; track stat.stat.name) {
+              <p>{{stat.stat.name}}: {{stat.base_stat}}</p>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </main>
