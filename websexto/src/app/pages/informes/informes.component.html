@@ -1,17 +1,60 @@
 <main>
-    @for (pokemon of pokemons; track pokemon.name) {
-      <div class="pokemon-info">
-        <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
-        <div class="pokemon-details">
-          <h2>{{pokemon.name}}</h2>
-          <p class="abilities">Abilities: {{getAbilityNames(pokemon.abilities)}}</p>
-          <div class="stats">
-            <h3>Stats:</h3>
-            @for (stat of pokemon.stats; track stat.stat.name) {
-              <p>{{stat.stat.name}}: {{stat.base_stat}}</p>
-            }
+  @if (loading) {
+    <div class="loading">
+      <p>Loading Pokémon...</p>
+    </div>
+  } @else {
+    <h1 class="title">Lista de Pokemon</h1>
+    
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Buscar Pokémon..." 
+        [(ngModel)]="searchTerm" 
+        (input)="searchPokemon()"
+        class="search-input">
+      <button class="search-button" (click)="searchPokemon()">Buscar</button>
+      <button class="reset-button" (click)="resetSearch()" *ngIf="searchTerm">Limpiar</button>
+    </div>
+    
+    <div class="pokemon-grid">
+      @for (pokemon of displayedPokemons; track pokemon.name) {
+        <div class="pokemon-card">
+          <div class="pokemon-header">
+            <h2>{{pokemon.name}}</h2>
+          </div>
+          <div class="pokemon-image">
+            <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+          </div>
+          <div class="pokemon-details">
+            <div class="abilities-section">
+              <h3>Abilities</h3>
+              <p>{{getAbilityNames(pokemon.abilities)}}</p>
+            </div>
+            <div class="stats-section">
+              <h3>Stats</h3>
+              <div class="stats-grid">
+                @for (stat of pokemon.stats; track stat.stat.name) {
+                  <div class="stat-item">
+                    <span class="stat-name">{{stat.stat.name}}</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" [style.width.%]="stat.base_stat/2"></div>
+                      <span class="stat-value">{{stat.base_stat}}</span>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
           </div>
         </div>
+      }
+    </div>
+    
+    <div class="pagination-controls" *ngIf="!searchTerm">
+      <div class="pagination-buttons">
+        <button [disabled]="currentIndex === 0 && !previousPage" (click)="showPrevious5()">Previous</button>
+        <button [disabled]="currentIndex + pageSize >= allPokemons.length && !nextPage" (click)="showNext5()">Next</button>
       </div>
-    }
-  </main>
+    </div>
+  }
+</main>
