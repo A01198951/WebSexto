@@ -41,4 +41,10 @@
     <!-- Mensaje de error condicional que se muestra solo si errorMessage tiene un valor -->
     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
   </form>
+  
+  <!-- Enlaces para registro y recuperación de contraseña -->
+  <div class="login-links">
+    <a routerLink="/registro" class="login-link">¿No tienes cuenta? Regístrate</a>
+    <a routerLink="/recuperar" class="login-link">¿Olvidaste tu contraseña?</a>
+  </div>
 </div>

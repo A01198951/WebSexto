@@ -11,6 +11,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { CarreraComponent } from './pages/carrera/carrera.component';
 import { InformesComponent } from './pages/informes/informes.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';
+import { RecuperarComponent } from './pages/recuperar/recuperar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { LoginComponent } from './pages/login/login.component';
     PerfilComponent,
     CarreraComponent,
     InformesComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent,
+    RecuperarComponent
   ],
   imports: [
     BrowserModule,

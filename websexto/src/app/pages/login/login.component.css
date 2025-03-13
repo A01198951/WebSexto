@@ -87,3 +87,23 @@ button:hover {
   text-align: center;
   margin-top: 1rem;
 }
+
+.login-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.login-link {
+  display: block;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+

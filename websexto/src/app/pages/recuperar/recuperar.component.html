@@ -1,0 +1,40 @@
+<div class="recuperar-container">
+    <form (ngSubmit)="recuperar()" #recuperarForm="ngForm">
+      <div class="form-header">
+        <h2>Recuperar contraseña</h2>
+        <p>Ingrese su correo electrónico para recibir instrucciones</p>
+      </div>
+  
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input 
+          type="email" 
+          id="correo" 
+          name="correo"
+          [(ngModel)]="usuario.correo" 
+          required
+          email
+          placeholder="ejemplo@correo.com"
+          #correo="ngModel"
+        />
+        <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error-message">
+          <span *ngIf="correo.errors?.['required']">El correo es obligatorio.</span>
+          <span *ngIf="correo.errors?.['email']">Ingrese un correo válido.</span>
+        </div>
+      </div>
+  
+      <div class="button-group">
+        <button type="submit" class="btn-recuperar" [disabled]="!recuperarForm.valid">
+          Enviar instrucciones
+        </button>
+        <button type="button" class="btn-reset" (click)="limpiarFormulario()">
+          Limpiar
+        </button>
+      </div>
+  
+      <div class="form-footer">
+        <p>¿Recordaste tu contraseña? <a routerLink="/login">Iniciar sesión</a></p>
+        <p>¿No tienes una cuenta? <a routerLink="/registro">Registrarse</a></p>
+      </div>
+    </form>
+  </div>
