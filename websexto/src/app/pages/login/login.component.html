@@ -1,7 +1,7 @@
 <!-- Contenedor principal que centra todo el contenido del login -->
 <div class="login-container">
   <!-- Formulario con evento ngSubmit que ejecuta el método login -->
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="onLogin()">
     <!-- Ícono de perfil circular en la parte superior -->
     <div class="profile-icon">
       <i class="fas fa-user"></i>
@@ -11,14 +11,14 @@
     
     <!--Usuario -->
     <div class="form-group">
-      <label for="username">Usuario:</label>
+      <label for="email">Correo electrónico:</label>
       <input 
-        type="text" 
-        id="username" 
-        [(ngModel)]="username" 
-        name="username" 
+        type="email" 
+        id="email" 
+        [(ngModel)]="email" 
+        name="email" 
         required 
-        placeholder="Ingrese su usuario"
+        placeholder="Ingrese su correo electrónico"
       />
     </div>
 
